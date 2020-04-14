@@ -15,7 +15,7 @@ public class Planilha {
 		    String csvDivisor = ";";
 		    try {
 		    	
-		        br = new BufferedReader(new FileReader("C:/Users/karol/RabbitMQ/Lab_RabbitMQ/1688438_acoes_bovespa.csv"));
+		        br = new BufferedReader(new FileReader("D:/Barcelos/Desktop/Quinto_Periodo/Lab_DAMD/Ex/Rabbitmq/src/1688438_acoes_bovespa.csv"));
 		        for (int i=0;(linha = br.readLine()) != null; i++) {
 		        	if(i!=0) {
 		            String[] codigo = linha.split(csvDivisor);
@@ -48,7 +48,7 @@ public class Planilha {
 			    String csvDivisor = ",";
 			    try {
 			    	
-			        br = new BufferedReader(new FileReader("C:/Users/karol/RabbitMQ/Lab_RabbitMQ/LivroDeOfertas.csv"));
+			        br = new BufferedReader(new FileReader("D:/Barcelos/Desktop/Quinto_Periodo/Lab_DAMD/Ex/Rabbitmq/src/LivroDeOfertas.csv"));
 			        for (int i=0;(linha = br.readLine()) != null; i++) {
 			            String[] codigo = linha.split(csvDivisor);
 			            cod.add(linha);

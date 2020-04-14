@@ -1,5 +1,4 @@
 import java.io.IOException;
-
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -13,17 +12,20 @@ public class BolsaDeValores {
 	 private static final String bolsadevalores = "BOLSADEVALORES";
 
 	    public static void main(String[] argv) throws Exception {
-	    	
+	    	//argv[1] = "#";
 	        ConnectionFactory factory = new ConnectionFactory();
 	        factory.setHost("localhost");
-	        try (Connection connection = factory.newConnection();
-	             Channel channel = connection.createChannel()) {
+	        //factory.setUsername("localhost");
+	        //factory.setPassword("123456");
+	        factory.setPort(5672);
+	        Connection connection = factory.newConnection();
+	             Channel channel = connection.createChannel(); 
 	        	 channel.exchangeDeclare(broker, "topic");
 	 	        String queueName = channel.queueDeclare().getQueue();
-	 	        if (argv.length < 1) {
+	 	        /*if (argv.length < 1) {
 	 	            System.err.println("Usage: ReceiveLogsTopic [binding_key]...");
 	 	            System.exit(1);
-	 	        }
+	 	        }*/
 
 	 	        for (String bindingKey : argv) {
 	 	            channel.queueBind(queueName, broker, bindingKey);
@@ -50,7 +52,7 @@ public class BolsaDeValores {
 
 	            channel.basicPublish(bolsadevalores, routingKey, null, message.getBytes("UTF-8"));
 	            System.out.println(" [x] Sent '" + routingKey + "':'" + message + "'");
-	        }
+	        
 	    }
 
 	    private static String getRouting(String[] strings) {

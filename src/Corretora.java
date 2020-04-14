@@ -17,6 +17,9 @@ public class Corretora {
 		  	String message = null;
 	        ConnectionFactory factory = new ConnectionFactory();
 	        factory.setHost("localhost");
+	        //factory.setUsername("localhost");
+	        //factory.setPassword("123456");
+	        factory.setPort(5672);
 	        try (Connection connection = factory.newConnection();
 	             Channel channel = connection.createChannel()) {
 
@@ -39,6 +42,9 @@ public class Corretora {
 	    public static void subscribe(String[] argv) throws Exception {
 	        ConnectionFactory factory = new ConnectionFactory();
 	        factory.setHost("localhost");
+	        //factory.setUsername("localhost");
+	        //factory.setPassword("123456");
+	        factory.setPort(5672);
 	        Connection connection = factory.newConnection();
 	        Channel channel = connection.createChannel();
 

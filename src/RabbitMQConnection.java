@@ -7,11 +7,11 @@ public class RabbitMQConnection {
     Connection conn = null;
     try{
         ConnectionFactory factory = new ConnectionFactory();
-        //factory.setUsername("");
-        //factory.setPassword("");
+        factory.setUsername("localhost");
+        factory.setPassword("123456");
         //factory.setVirtualHost("");
         factory.setHost("localhost");
-        //factory.setPort(15672);
+        //factory.setPort(5672);
         conn = factory.newConnection();
     }catch(Exception e){
         e.printStackTrace();
